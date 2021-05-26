@@ -1,14 +1,14 @@
 import { Field, reduxForm } from 'redux-form';
 import style from '../Chat.module.css';
 
-const ChatForm = (props) => {
+const ChatForm = ({ handleSubmit, pristine }) => {
 
     return (
         <form
             action="#"
             className={style.form}
             // handleSubmit - вызывается из LoginReduxForm, а в нем (handleSubmit) вызывает onSubmit (<LoginReduxForm onSubmit={onSubmit} />), который вызывает нашу функцию сonst onSubmit()
-            onSubmit={props.handleSubmit}>
+            onSubmit={handleSubmit}>
             <Field
                 component='textarea'
                 placeholder='Enter your message'
@@ -16,9 +16,9 @@ const ChatForm = (props) => {
                 autoFocus
                 className={style.textField}
             />
-            <button 
+            <button
                 className={style.sendButton}
-            >
+                disabled={pristine}>
                 Send</button>
         </form>
     );

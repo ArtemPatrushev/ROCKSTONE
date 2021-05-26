@@ -1,6 +1,11 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
-  padding: 15px;
+  /* padding: 0 15px 0 15px; */
   height: 100vh;
 }
 

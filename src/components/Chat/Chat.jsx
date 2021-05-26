@@ -1,44 +1,41 @@
 import { LoginReduxForm } from './ChatForm/ChatForm';
-import Message from './Message/Message';
+import Message from '../Message/Message';
 import style from './Chat.module.css';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import { useState } from 'react';
-// import { CSSTransition } from 'react-transition-group';
+import React from 'react';
+import { useEffect } from 'react';
+import { reset } from "redux-form";
 
 
-const Chat = (props) => {
+const Chat = ({ messages, addMessage, deleteMessage }) => {
 
-    const [messageText, setMessageText] = useState();
+    useEffect(() => {
+        chatWindow.current.scrollTop = chatWindow.current.scrollHeight - chatWindow.current.clientHeight;
+    });
 
-    // let messagesElements = props.messages.map((m) => {
-    //     return <Message messageId={m.id} message={m.message} key={m.id} deleteMessage={props.deleteMessage} className='messageItem' />
-    // });
+    const chatWindow = React.createRef()
+
+    let messagesElements = messages.map((m) => {
+        return <Message messageId={m.id} message={m.message} key={m.id} deleteMessage={deleteMessage} className='messageItem' />
+    });
+
 
     // formData - данные из Field, которые пришли из LoginReduxFor
-    const addNewMessage = (formData) => {
+    const addNewMessage = (formData, dispatch) => {
         let { message } = formData;
-        const lastMessageId = props.messages.length;   // с помощью данного метода берем идентификатор нашего последнего сообщения
+        const lastMessageId = messages.length;   // с помощью данного метода берем идентификатор нашего последнего сообщения
         const messageId = lastMessageId + 1;
         // debugger
-        props.addMessage(message, messageId);
+        addMessage(message, messageId);
+        dispatch(reset('message'));
     };
 
     return (
         <div className={style.chatWrapper}>
-            <LoginReduxForm 
+            <LoginReduxForm
                 onSubmit={addNewMessage}
             />
-            <div className={style.messageWrapper}>
-                <TransitionGroup component='div'>
-                    {props.messages.map((m) => 
-                        <CSSTransition
-                            key={m.id}
-                            timeout={600}
-                            classNames='messageItem'>
-                            <Message messageId={m.id} message={m.message} key={m.id} deleteMessage={props.deleteMessage} className='messageItem' />
-                        </CSSTransition>
-                    )}
-                </TransitionGroup>
+            <div className={style.messageWrapper} ref={chatWindow}>
+                {messagesElements}
             </div>
         </div>
     );
