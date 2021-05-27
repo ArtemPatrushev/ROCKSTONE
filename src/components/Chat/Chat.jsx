@@ -1,9 +1,10 @@
 import { LoginReduxForm } from './ChatForm/ChatForm';
 import Message from '../Message/Message';
-import style from './Chat.module.css';
+import style from './Chat.module.scss';
 import React from 'react';
 import { useEffect } from 'react';
 import { reset } from "redux-form";
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 
 const Chat = ({ messages, addMessage, deleteMessage }) => {
@@ -12,19 +13,12 @@ const Chat = ({ messages, addMessage, deleteMessage }) => {
         chatWindow.current.scrollTop = chatWindow.current.scrollHeight - chatWindow.current.clientHeight;
     });
 
-    const chatWindow = React.createRef()
+    const chatWindow = React.createRef();
 
-    let messagesElements = messages.map((m) => {
-        return <Message messageId={m.id} message={m.message} key={m.id} deleteMessage={deleteMessage} className='messageItem' />
-    });
-
-
-    // formData - данные из Field, которые пришли из LoginReduxFor
     const addNewMessage = (formData, dispatch) => {
         let { message } = formData;
-        const lastMessageId = messages.length;   // с помощью данного метода берем идентификатор нашего последнего сообщения
+        const lastMessageId = messages.length;
         const messageId = lastMessageId + 1;
-        // debugger
         addMessage(message, messageId);
         dispatch(reset('message'));
     };
@@ -34,8 +28,17 @@ const Chat = ({ messages, addMessage, deleteMessage }) => {
             <LoginReduxForm
                 onSubmit={addNewMessage}
             />
-            <div className={style.messageWrapper} ref={chatWindow}>
-                {messagesElements}
+            <div className={style.chatWrapper__messageBlock} ref={chatWindow}>
+                <TransitionGroup component='div'>
+                    {messages.map((m) =>
+                        <CSSTransition
+                            key={m.id}
+                            timeout={1100}
+                            classNames='messageItem'>
+                            <Message messageId={m.id} message={m.message} key={m.id} deleteMessage={deleteMessage} className='messageItem' />
+                        </CSSTransition>
+                    )}
+                </TransitionGroup>
             </div>
         </div>
     );
