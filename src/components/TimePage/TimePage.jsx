@@ -1,29 +1,23 @@
-import style from './TimePage.module.scss';
-// import moment from 'moment';
-import { format } from 'date-fns'
 import { useEffect, useState } from 'react';
 
+import { format } from 'date-fns';
+
+import style from './TimePage.module.scss';
 
 const TimePage = () => {
 
-    const [time, setTime] = useState(format(new Date(), "HH:mm:ss"));
+    const [time, setTime] = useState(format(new Date(), 'HH:mm:ss'));
 
     useEffect(() => {
-        const timer = setInterval(() => {
-            setTime(format(new Date(), "HH:mm:ss"));
-        }, 1000);
-        return () => {
-            clearInterval(timer);
-        }
-    }, []);
-
-    const currentTime = format(new Date(), "HH:mm:ss");
+        const timer = setInterval(() => setTime(format(new Date(), 'HH:mm:ss')), 1000);
+        return () => clearInterval(timer);
+    });
 
     return (
         <div className={style.timePageWrapper}>
             <div className={style.timeBox}>
                 <p className={style.timeBox__time}>
-                    {currentTime}
+                    {time}
                 </p>
             </div>
         </div>

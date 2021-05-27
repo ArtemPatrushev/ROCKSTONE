@@ -1,12 +1,10 @@
 import MainSlider from './components/MainSlider/MainSlider';
 import './App.css';
 
-function App() {
-  return (
+const App = () => (
     <div className="App">
-      <MainSlider />
+        <MainSlider />
     </div>
-  );
-}
+);
 
 export default App;

@@ -1,5 +1,4 @@
-const ADD_MESSAGE = 'ADD_MESSAGE';
-const DELETE_MESSAGE = 'DELETE_MESSAGE';
+import { ADD_MESSAGE, DELETE_MESSAGE } from '../constants/constants';
 
 let initialState = {
     messages: []
@@ -9,7 +8,7 @@ const chatReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case ADD_MESSAGE: {
-            let {message, messageId} = action;
+            let { message, messageId } = action;
             return {
                 ...state,
                 messages: [...state.messages, { id: messageId, message: message }]
@@ -25,22 +24,7 @@ const chatReducer = (state = initialState, action) => {
         }
         default:
             return state;
-    }
-}
-
-export const addMessage = (message, messageId) => {
-    return {
-        type: ADD_MESSAGE,
-        message,
-        messageId
     };
 };
-
-export const deleteMessage = (messageId) => {
-    return {
-        type: DELETE_MESSAGE,
-        messageId
-    }
-}
 
 export default chatReducer;

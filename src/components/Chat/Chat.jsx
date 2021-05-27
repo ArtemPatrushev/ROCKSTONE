@@ -1,11 +1,11 @@
-import { LoginReduxForm } from './ChatForm/ChatForm';
-import Message from '../Message/Message';
-import style from './Chat.module.scss';
 import React from 'react';
 import { useEffect } from 'react';
 import { reset } from "redux-form";
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
+import { LoginReduxForm } from './ChatForm/ChatForm';
+import Message from '../Message/Message';
+import style from './Chat.module.scss';
 
 const Chat = ({ messages, addMessage, deleteMessage }) => {
 
@@ -13,7 +13,7 @@ const Chat = ({ messages, addMessage, deleteMessage }) => {
         chatWindow.current.scrollTop = chatWindow.current.scrollHeight - chatWindow.current.clientHeight;
     });
 
-    const chatWindow = React.createRef();
+    const chatWindow = React.useRef();
 
     const addNewMessage = (formData, dispatch) => {
         let { message } = formData;
