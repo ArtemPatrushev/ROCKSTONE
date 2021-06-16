@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/ROCKSTONE/static/css/main.ad2e1d9d.chunk.css",
+    "main.js": "/ROCKSTONE/static/js/main.63b2e44a.chunk.js",
+    "main.js.map": "/ROCKSTONE/static/js/main.63b2e44a.chunk.js.map",
+    "runtime-main.js": "/ROCKSTONE/static/js/runtime-main.824f5730.js",
+    "runtime-main.js.map": "/ROCKSTONE/static/js/runtime-main.824f5730.js.map",
+    "static/css/2.77f8eec4.chunk.css": "/ROCKSTONE/static/css/2.77f8eec4.chunk.css",
+    "static/js/2.647844dd.chunk.js": "/ROCKSTONE/static/js/2.647844dd.chunk.js",
+    "static/js/2.647844dd.chunk.js.map": "/ROCKSTONE/static/js/2.647844dd.chunk.js.map",
+    "static/js/3.ca4b50a0.chunk.js": "/ROCKSTONE/static/js/3.ca4b50a0.chunk.js",
+    "static/js/3.ca4b50a0.chunk.js.map": "/ROCKSTONE/static/js/3.ca4b50a0.chunk.js.map",
+    "index.html": "/ROCKSTONE/index.html",
+    "static/css/2.77f8eec4.chunk.css.map": "/ROCKSTONE/static/css/2.77f8eec4.chunk.css.map",
+    "static/css/main.ad2e1d9d.chunk.css.map": "/ROCKSTONE/static/css/main.ad2e1d9d.chunk.css.map",
+    "static/js/2.647844dd.chunk.js.LICENSE.txt": "/ROCKSTONE/static/js/2.647844dd.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.824f5730.js",
+    "static/css/2.77f8eec4.chunk.css",
+    "static/js/2.647844dd.chunk.js",
+    "static/css/main.ad2e1d9d.chunk.css",
+    "static/js/main.63b2e44a.chunk.js"
+  ]
+}
